@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TelegramStyleMessenger
@@ -21,6 +22,7 @@ namespace TelegramStyleMessenger
 
         private Thread listenThread;
         private bool isConnected;
+        private CancellationTokenSource cancellationTokenSource;
 
         public ChatForm(bool isServer, string connectionInfo, string userName = "")
         {
@@ -32,10 +34,10 @@ namespace TelegramStyleMessenger
             {
                 this.userName = "User_" + DateTime.Now.ToString("HHmmss");
             }
-
+            cancellationTokenSource = new CancellationTokenSource();
             InitializeComponent();
             ApplyModernStyle();
-            InitializeChat();
+            _ = InitializeChatAsync();
         }
 
         private void ApplyModernStyle()
@@ -80,19 +82,26 @@ namespace TelegramStyleMessenger
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect,
             int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
-        private void InitializeChat()
+        private async Task InitializeChatAsync()
         {
-            if (isServer)
+            try
             {
-                StartServer();
+                if (isServer)
+                {
+                    await StartServerAsync();
+                }
+                else
+                {
+                    await ConnectToServerAsync();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ConnectToServer();
+                AddMessage($"Ошибка инициализации: {ex.Message}", true);
             }
         }
 
-        private void StartServer()
+        private async Task StartServerAsync()
         {
             try
             {
@@ -118,7 +127,16 @@ namespace TelegramStyleMessenger
 
                 UpdateStatus("Ожидание подключения...");
 
-                listenThread = new Thread(new ThreadStart(ListenForClients));
+                // Асинхронное ожидание клиента
+                client = await server.AcceptTcpClientAsync();
+                stream = client.GetStream();
+                isConnected = true;
+
+                AddMessage("Клиент подключился!", true);
+                UpdateStatus("Подключено");
+
+                // Запускаем поток для прослушивания сообщений
+                listenThread = new Thread(new ThreadStart(ListenForMessages));
                 listenThread.IsBackground = true;
                 listenThread.Start();
             }
@@ -155,7 +173,7 @@ namespace TelegramStyleMessenger
             }
         }
 
-        private void ConnectToServer()
+        private async Task ConnectToServerAsync()
         {
             try
             {
@@ -169,8 +187,24 @@ namespace TelegramStyleMessenger
                 string ip = parts[0];
                 int port = int.Parse(parts[1]);
 
-                client = new TcpClient();
-                client.Connect(ip, port);
+                UpdateStatus("Подключение...");
+
+                // Асинхронное подключение с таймаутом
+                var timeoutTask = Task.Delay(TimeSpan.FromSeconds(10));
+                var connectTask = Task.Run(() =>
+                {
+                    client = new TcpClient();
+                    client.Connect(ip, port);
+                });
+
+                var completedTask = await Task.WhenAny(connectTask, timeoutTask);
+
+                if (completedTask == timeoutTask)
+                {
+                    AddMessage("Таймаут подключения. Сервер не отвечает.", true);
+                    return;
+                }
+
                 stream = client.GetStream();
                 isConnected = true;
 
@@ -188,6 +222,7 @@ namespace TelegramStyleMessenger
             catch (Exception ex)
             {
                 AddMessage($"Ошибка подключения: {ex.Message}", true);
+                UpdateStatus("Ошибка подключения");
             }
         }
 
@@ -432,13 +467,24 @@ namespace TelegramStyleMessenger
             }
         }
 
-        private void ChatForm_FormClosed(object sender, FormClosedEventArgs e)
+        protected override void OnFormClosed(FormClosedEventArgs e)
         {
+            base.OnFormClosed(e);
+
+            // Корректное закрытие ресурсов
             isConnected = false;
-            stream?.Close();
-            client?.Close();
-            server?.Stop();
-            Application.Exit();
+            cancellationTokenSource?.Cancel();
+
+            try
+            {
+                stream?.Close();
+                client?.Close();
+                server?.Stop();
+            }
+            catch
+            {
+                // Игнорируем ошибки при закрытии
+            }
         }
     }
 }

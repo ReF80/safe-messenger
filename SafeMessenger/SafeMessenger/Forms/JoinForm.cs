@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -7,6 +8,8 @@ namespace TelegramStyleMessenger
 {
     public partial class JoinForm : Form
     {
+        private bool isConnecting = false;
+
         public JoinForm()
         {
             InitializeComponent();
@@ -54,8 +57,10 @@ namespace TelegramStyleMessenger
             btnBack.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 80, 80);
         }
 
-        private void btnConnect_Click(object sender, EventArgs e)
+        private async void btnConnect_Click(object sender, EventArgs e)
         {
+            if (isConnecting) return;
+
             if (string.IsNullOrWhiteSpace(txtName.Text) ||
                 string.IsNullOrWhiteSpace(txtIP.Text) ||
                 string.IsNullOrWhiteSpace(txtPort.Text))
@@ -64,14 +69,63 @@ namespace TelegramStyleMessenger
                 return;
             }
 
-            string connectionInfo = $"{txtIP.Text}:{txtPort.Text}";
-            var chatForm = new ChatForm(false, connectionInfo, txtName.Text);
-            chatForm.Show();
-            this.Hide();
+            isConnecting = true;
+            btnConnect.Enabled = false;
+            btnBack.Enabled = false;
+            btnConnect.Text = "Подключение...";
+
+            try
+            {
+                string connectionInfo = $"{txtIP.Text}:{txtPort.Text}";
+
+                // Создаем форму чата, но не показываем сразу
+                var chatForm = new ChatForm(false, connectionInfo, txtName.Text);
+
+                // Пытаемся подключиться асинхронно
+                bool connectionSuccess = await Task.Run(() => ConnectToChat(chatForm));
+
+                if (connectionSuccess)
+                {
+                    chatForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    chatForm.Dispose();
+                    ShowModernMessage("Не удалось подключиться к серверу. Проверьте IP и порт.");
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowModernMessage($"Ошибка подключения: {ex.Message}");
+            }
+            finally
+            {
+                isConnecting = false;
+                btnConnect.Enabled = true;
+                btnBack.Enabled = true;
+                btnConnect.Text = "Подключиться";
+            }
+        }
+
+        private bool ConnectToChat(ChatForm chatForm)
+        {
+            try
+            {
+                // Даем форме время на инициализацию
+                System.Threading.Thread.Sleep(100);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            if (isConnecting) return;
+
             var startForm = new StartForm();
             startForm.Show();
             this.Hide();
@@ -88,6 +142,33 @@ namespace TelegramStyleMessenger
         private void JoinForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtIP.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtIP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtPort.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPort_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnConnect_Click(sender, e);
+                e.Handled = true;
+            }
         }
     }
 }

@@ -153,7 +153,6 @@ namespace TelegramStyleMessenger
             this.Name = "ChatForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Telegram Messenger";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ChatForm_FormClosed);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelChat.ResumeLayout(false);
