@@ -1,0 +1,13 @@
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\obj\Debug\SafeMessenger.csproj.AssemblyReference.cache
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\obj\Debug\SafeMessenger.Properties.Resources.resources
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\obj\Debug\SafeMessenger.csproj.GenerateResource.cache
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\obj\Debug\SafeMessenger.csproj.CoreCompileInputs.cache
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\bin\Debug\SafeMessenger.exe.config
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\bin\Debug\SafeMessenger.exe
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\bin\Debug\SafeMessenger.pdb
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\obj\Debug\SafeMessenger.exe
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\obj\Debug\SafeMessenger.pdb
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\obj\Debug\TelegramStyleMessenger.ChatForm.resources
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\obj\Debug\TelegramStyleMessenger.ModernInputDialog.resources
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\obj\Debug\TelegramStyleMessenger.StartForm.resources
+D:\Projects\safe-messenger\SafeMessenger\SafeMessenger\obj\Debug\TelegramStyleMessenger.JoinForm.resources

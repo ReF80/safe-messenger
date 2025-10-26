@@ -1,0 +1,84 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\safe-messenger\\SafeMessenger\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|d:\\projects\\safe-messenger\\safemessenger\\safemessenger\\forms\\chatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\chatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|D:\\Projects\\safe-messenger\\SafeMessenger\\safemessenger\\forms\\joinform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\joinform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|D:\\Projects\\safe-messenger\\SafeMessenger\\safemessenger\\forms\\startform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\startform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|D:\\Projects\\safe-messenger\\SafeMessenger\\safemessenger\\forms\\startform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\startform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChatForm.cs",
+              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\ChatForm.cs",
+              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\ChatForm.cs",
+              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\ChatForm.cs",
+              "RelativeToolTip": "SafeMessenger\\Forms\\ChatForm.cs",
+              "ViewState": "AQIAAJsBAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T17:47:51.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "JoinForm.cs",
+              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\JoinForm.cs",
+              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\JoinForm.cs",
+              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\JoinForm.cs",
+              "RelativeToolTip": "SafeMessenger\\Forms\\JoinForm.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T17:47:18.557Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StartForm.cs",
+              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\StartForm.cs",
+              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\StartForm.cs",
+              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\StartForm.cs",
+              "RelativeToolTip": "SafeMessenger\\Forms\\StartForm.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T17:46:54.669Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StartForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\StartForm.cs",
+              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\StartForm.cs",
+              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\StartForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "SafeMessenger\\Forms\\StartForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T16:38:25.812Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
