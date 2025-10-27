@@ -40,44 +40,6 @@ namespace TelegramStyleMessenger
             _ = InitializeChatAsync();
         }
 
-        private void ApplyModernStyle()
-        {
-            // Темная тема
-            this.BackColor = Color.FromArgb(32, 32, 32);
-            panelHeader.BackColor = Color.FromArgb(42, 42, 42);
-            panelChat.BackColor = Color.FromArgb(32, 32, 32);
-            panelInput.BackColor = Color.FromArgb(42, 42, 42);
-            messageContainer.BackColor = Color.FromArgb(32, 32, 32);
-
-            // Заголовок
-            lblTitle.ForeColor = Color.White;
-            lblStatus.ForeColor = Color.LightGray;
-
-            // Текстовое поле
-            txtMessage.BackColor = Color.FromArgb(50, 50, 50);
-            txtMessage.ForeColor = Color.White;
-            txtMessage.BorderStyle = BorderStyle.FixedSingle;
-
-            txtMessage.Enter += (s, e) => {
-                txtMessage.BackColor = Color.FromArgb(70, 70, 70);
-            };
-            txtMessage.Leave += (s, e) => {
-                txtMessage.BackColor = Color.FromArgb(50, 50, 50);
-            };
-
-            // Кнопки
-            btnSend.BackColor = Color.FromArgb(0, 136, 204);
-            btnSend.ForeColor = Color.White;
-            btnSend.FlatAppearance.BorderSize = 0;
-            btnSend.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 116, 184);
-            btnSend.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 96, 164);
-
-            btnAttach.BackColor = Color.FromArgb(60, 60, 60);
-            btnAttach.ForeColor = Color.White;
-            btnAttach.FlatAppearance.BorderSize = 0;
-            btnAttach.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 80, 80);
-        }
-
         [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect,
             int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);

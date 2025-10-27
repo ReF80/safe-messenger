@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System;
 using System.Windows.Forms;
 
 namespace TelegramStyleMessenger
@@ -44,17 +43,17 @@ namespace TelegramStyleMessenger
             // lblFooter
             // 
             this.lblFooter.AutoSize = true;
-            this.lblFooter.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblFooter.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblFooter.Location = new System.Drawing.Point(120, 400);
             this.lblFooter.Name = "lblFooter";
-            this.lblFooter.Size = new System.Drawing.Size(160, 15);
+            this.lblFooter.Size = new System.Drawing.Size(169, 15);
             this.lblFooter.TabIndex = 3;
             this.lblFooter.Text = "Secure messaging • Version 1.0";
             // 
             // btnJoinChat
             // 
             this.btnJoinChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnJoinChat.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnJoinChat.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnJoinChat.Location = new System.Drawing.Point(80, 250);
             this.btnJoinChat.Name = "btnJoinChat";
             this.btnJoinChat.Size = new System.Drawing.Size(240, 45);
@@ -66,7 +65,7 @@ namespace TelegramStyleMessenger
             // btnCreateChat
             // 
             this.btnCreateChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateChat.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCreateChat.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnCreateChat.Location = new System.Drawing.Point(80, 180);
             this.btnCreateChat.Name = "btnCreateChat";
             this.btnCreateChat.Size = new System.Drawing.Size(240, 45);
@@ -78,12 +77,12 @@ namespace TelegramStyleMessenger
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.Location = new System.Drawing.Point(80, 80);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(240, 32);
+            this.lblTitle.Size = new System.Drawing.Size(200, 32);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Telegram Messenger";
+            this.lblTitle.Text = "Safe  Messenger";
             // 
             // StartForm
             // 
@@ -93,11 +92,12 @@ namespace TelegramStyleMessenger
             this.MaximizeBox = false;
             this.Name = "StartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Telegram Messenger";
+            this.Text = "Safe  Messenger";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StartForm_FormClosed);
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -107,6 +107,28 @@ namespace TelegramStyleMessenger
         private Button btnCreateChat;
         private Button btnJoinChat;
         private Label lblFooter;
+
+        private void ApplyModernStyle()
+        {
+            // Стиль для кнопок
+            btnCreateChat.BackColor = Color.FromArgb(0, 136, 204);
+            btnCreateChat.ForeColor = Color.White;
+            btnCreateChat.FlatAppearance.BorderSize = 0;
+            btnCreateChat.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 116, 184);
+            btnCreateChat.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 96, 164);
+
+            btnJoinChat.BackColor = Color.FromArgb(0, 136, 204);
+            btnJoinChat.ForeColor = Color.White;
+            btnJoinChat.FlatAppearance.BorderSize = 0;
+            btnJoinChat.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 116, 184);
+            btnJoinChat.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 96, 164);
+
+            // Темная тема
+            this.BackColor = Color.FromArgb(32, 32, 32);
+            panelMain.BackColor = Color.FromArgb(32, 32, 32);
+            lblTitle.ForeColor = Color.White;
+            lblFooter.ForeColor = Color.Gray;
+        }
     }
 
 }

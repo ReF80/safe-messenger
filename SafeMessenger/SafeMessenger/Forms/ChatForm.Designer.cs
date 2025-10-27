@@ -59,20 +59,20 @@ namespace TelegramStyleMessenger
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblStatus.Location = new System.Drawing.Point(15, 35);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(87, 15);
+            this.lblStatus.Size = new System.Drawing.Size(94, 15);
             this.lblStatus.TabIndex = 1;
             this.lblStatus.Text = "Подключение...";
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.Location = new System.Drawing.Point(15, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(118, 21);
+            this.lblTitle.Size = new System.Drawing.Size(120, 21);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Telegram Chat";
             // 
@@ -98,8 +98,8 @@ namespace TelegramStyleMessenger
             // 
             // panelInput
             // 
-            this.panelInput.Controls.Add(this.btnSend);
             this.panelInput.Controls.Add(this.btnAttach);
+            this.panelInput.Controls.Add(this.btnSend);
             this.panelInput.Controls.Add(this.txtMessage);
             this.panelInput.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelInput.Location = new System.Drawing.Point(0, 411);
@@ -111,8 +111,8 @@ namespace TelegramStyleMessenger
             // btnSend
             // 
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSend.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSend.Location = new System.Drawing.Point(390, 12);
+            this.btnSend.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnSend.Location = new System.Drawing.Point(439, 13);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(35, 35);
             this.btnSend.TabIndex = 2;
@@ -123,8 +123,8 @@ namespace TelegramStyleMessenger
             // btnAttach
             // 
             this.btnAttach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAttach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAttach.Location = new System.Drawing.Point(10, 12);
+            this.btnAttach.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnAttach.Location = new System.Drawing.Point(398, 13);
             this.btnAttach.Name = "btnAttach";
             this.btnAttach.Size = new System.Drawing.Size(35, 35);
             this.btnAttach.TabIndex = 1;
@@ -134,11 +134,11 @@ namespace TelegramStyleMessenger
             // 
             // txtMessage
             // 
-            this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtMessage.Location = new System.Drawing.Point(55, 12);
+            this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtMessage.Location = new System.Drawing.Point(10, 13);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(325, 35);
+            this.txtMessage.Size = new System.Drawing.Size(378, 35);
             this.txtMessage.TabIndex = 0;
             this.txtMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMessage_KeyPress);
             // 
@@ -174,5 +174,43 @@ namespace TelegramStyleMessenger
         private TextBox txtMessage;
         private Button btnSend;
         private Button btnAttach;
+
+        private void ApplyModernStyle()
+        {
+            // Темная тема
+            this.BackColor = Color.FromArgb(32, 32, 32);
+            panelHeader.BackColor = Color.FromArgb(42, 42, 42);
+            panelChat.BackColor = Color.FromArgb(32, 32, 32);
+            panelInput.BackColor = Color.FromArgb(42, 42, 42);
+            messageContainer.BackColor = Color.FromArgb(32, 32, 32);
+
+            // Заголовок
+            lblTitle.ForeColor = Color.White;
+            lblStatus.ForeColor = Color.LightGray;
+
+            // Текстовое поле
+            txtMessage.BackColor = Color.FromArgb(50, 50, 50);
+            txtMessage.ForeColor = Color.White;
+            txtMessage.BorderStyle = BorderStyle.FixedSingle;
+
+            txtMessage.Enter += (s, e) => {
+                txtMessage.BackColor = Color.FromArgb(70, 70, 70);
+            };
+            txtMessage.Leave += (s, e) => {
+                txtMessage.BackColor = Color.FromArgb(50, 50, 50);
+            };
+
+            // Кнопки
+            btnSend.BackColor = Color.FromArgb(0, 136, 204);
+            btnSend.ForeColor = Color.White;
+            btnSend.FlatAppearance.BorderSize = 0;
+            btnSend.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 116, 184);
+            btnSend.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 96, 164);
+
+            btnAttach.BackColor = Color.FromArgb(60, 60, 60);
+            btnAttach.ForeColor = Color.White;
+            btnAttach.FlatAppearance.BorderSize = 0;
+            btnAttach.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 80, 80);
+        }
     }
 }

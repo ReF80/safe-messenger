@@ -42,11 +42,13 @@ namespace TelegramStyleMessenger
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
             // 
+            this.panelMain.Controls.Add(this.button1);
             this.panelMain.Controls.Add(this.btnBack);
             this.panelMain.Controls.Add(this.btnConnect);
             this.panelMain.Controls.Add(this.txtPort);
@@ -61,7 +63,6 @@ namespace TelegramStyleMessenger
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(400, 450);
             this.panelMain.TabIndex = 0;
-            //this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // btnBack
             // 
@@ -73,6 +74,7 @@ namespace TelegramStyleMessenger
             this.btnBack.TabIndex = 8;
             this.btnBack.Text = "Назад";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click_1);
             // 
             // btnConnect
             // 
@@ -84,6 +86,7 @@ namespace TelegramStyleMessenger
             this.btnConnect.TabIndex = 7;
             this.btnConnect.Text = "Подключиться";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click_1);
             // 
             // txtPort
             // 
@@ -151,6 +154,17 @@ namespace TelegramStyleMessenger
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Подключение к чату";
             // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.button1.Location = new System.Drawing.Point(80, 381);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(240, 45);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Подключиться";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // JoinForm
             // 
             this.ClientSize = new System.Drawing.Size(400, 450);
@@ -177,5 +191,48 @@ namespace TelegramStyleMessenger
         private Label lblPort;
         private Button btnConnect;
         private Button btnBack;
+
+        private void ApplyModernStyle()
+        {
+            // Темная тема
+            this.BackColor = Color.FromArgb(32, 32, 32);
+            panelMain.BackColor = Color.FromArgb(32, 32, 32);
+            lblTitle.ForeColor = Color.White;
+            lblName.ForeColor = Color.White;
+            lblIP.ForeColor = Color.White;
+            lblPort.ForeColor = Color.White;
+
+            // Стиль текстовых полей
+            foreach (Control control in panelMain.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.BackColor = Color.FromArgb(50, 50, 50);
+                    textBox.ForeColor = Color.White;
+                    textBox.BorderStyle = BorderStyle.FixedSingle;
+
+                    textBox.Enter += (s, e) => {
+                        textBox.BackColor = Color.FromArgb(70, 70, 70);
+                    };
+                    textBox.Leave += (s, e) => {
+                        textBox.BackColor = Color.FromArgb(50, 50, 50);
+                    };
+                }
+            }
+
+            // Стиль кнопок
+            btnConnect.BackColor = Color.FromArgb(0, 136, 204);
+            btnConnect.ForeColor = Color.White;
+            btnConnect.FlatAppearance.BorderSize = 0;
+            btnConnect.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 116, 184);
+            btnConnect.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 96, 164);
+
+            btnBack.BackColor = Color.FromArgb(60, 60, 60);
+            btnBack.ForeColor = Color.White;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 80, 80);
+        }
+
+        private Button button1;
     }
 }
