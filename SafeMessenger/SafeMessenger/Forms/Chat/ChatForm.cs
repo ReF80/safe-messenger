@@ -24,6 +24,9 @@ namespace TelegramStyleMessenger
         private bool isConnected;
         private CancellationTokenSource cancellationTokenSource;
 
+        private MessagePanel messagePanel;
+
+
         public ChatForm(bool isServer, string connectionInfo, string userName = "")
         {
             this.isServer = isServer;
@@ -309,7 +312,7 @@ namespace TelegramStyleMessenger
             }
         }
 
-        private Panel CreateMessagePanel(string message, bool isSystem)
+        public Panel CreateMessagePanel(string message, bool isSystem)
         {
             var panel = new Panel();
             panel.AutoSize = true;
@@ -448,5 +451,12 @@ namespace TelegramStyleMessenger
                 // Игнорируем ошибки при закрытии
             }
         }
+
+        private void ChatForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+
     }
 }

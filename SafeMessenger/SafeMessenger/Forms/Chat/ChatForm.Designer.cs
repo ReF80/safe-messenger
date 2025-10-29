@@ -159,7 +159,7 @@ namespace TelegramStyleMessenger
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
             this.ResumeLayout(false);
-
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ChatForm_FormClosed);
         }
 
 
@@ -169,7 +169,7 @@ namespace TelegramStyleMessenger
         private Label lblTitle;
         private Label lblStatus;
         private Panel panelChat;
-        private FlowLayoutPanel messageContainer;
+        public FlowLayoutPanel messageContainer;
         private Panel panelInput;
         private TextBox txtMessage;
         private Button btnSend;
