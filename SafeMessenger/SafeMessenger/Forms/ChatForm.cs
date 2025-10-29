@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+// flag
 namespace TelegramStyleMessenger
 {
     public partial class ChatForm : Form
