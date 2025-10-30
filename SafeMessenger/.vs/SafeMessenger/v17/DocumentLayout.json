@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "D:\\Projects\\safe-messenger\\SafeMessenger\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|d:\\projects\\safe-messenger\\safemessenger\\safemessenger\\forms\\chatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\chatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|d:\\projects\\safe-messenger\\safemessenger\\safemessenger\\forms\\chat\\chatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\chat\\chatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|d:\\projects\\safe-messenger\\safemessenger\\safemessenger\\forms\\joinform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\joinform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|d:\\projects\\safe-messenger\\safemessenger\\safemessenger\\forms\\algorithms\\kuznechik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\algorithms\\kuznechik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|d:\\projects\\safe-messenger\\safemessenger\\safemessenger\\forms\\chatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\chatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|D:\\Projects\\safe-messenger\\SafeMessenger\\safemessenger\\forms\\chat\\chatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\chat\\chatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|d:\\projects\\safe-messenger\\safemessenger\\safemessenger\\forms\\joinform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\joinform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|D:\\Projects\\safe-messenger\\SafeMessenger\\safemessenger\\forms\\chat\\messagepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\chat\\messagepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|d:\\projects\\safe-messenger\\safemessenger\\safemessenger\\forms\\joinform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\joinform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|D:\\Projects\\safe-messenger\\SafeMessenger\\safemessenger\\forms\\chat\\chatform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF00C02B-E7D0-4929-9AB2-8241BE31CE31}|SafeMessenger\\SafeMessenger.csproj|solutionrelative:safemessenger\\forms\\chat\\chatform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,70 +30,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MessagePanel.cs",
+              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\Chat\\MessagePanel.cs",
+              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\Chat\\MessagePanel.cs",
+              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\Chat\\MessagePanel.cs",
+              "RelativeToolTip": "SafeMessenger\\Forms\\Chat\\MessagePanel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T21:24:54.322Z",
+              "IsPinned": true
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ChatForm.cs",
-              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\ChatForm.cs",
-              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\ChatForm.cs",
-              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\ChatForm.cs",
-              "RelativeToolTip": "SafeMessenger\\Forms\\ChatForm.cs",
-              "ViewState": "AQIAAIkAAAAAAAAAAAA6wJ4AAAAUAAAA",
+              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\Chat\\ChatForm.cs",
+              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\Chat\\ChatForm.cs",
+              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\Chat\\ChatForm.cs",
+              "RelativeToolTip": "SafeMessenger\\Forms\\Chat\\ChatForm.cs",
+              "ViewState": "AQIAAIIBAAAAAAAAAAAMwJMBAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-27T19:32:59.392Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Kuznechik.cs",
+              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\Algorithms\\Kuznechik.cs",
+              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\Algorithms\\Kuznechik.cs",
+              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\Algorithms\\Kuznechik.cs",
+              "RelativeToolTip": "SafeMessenger\\Forms\\Algorithms\\Kuznechik.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T00:14:18.833Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "ChatForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\ChatForm.cs",
-              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\ChatForm.cs",
-              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\ChatForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "SafeMessenger\\Forms\\ChatForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\Chat\\ChatForm.cs",
+              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\Chat\\ChatForm.cs",
+              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\Chat\\ChatForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "SafeMessenger\\Forms\\Chat\\ChatForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T19:31:39.648Z",
+              "WhenOpened": "2025-10-29T21:25:36.533Z",
               "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "JoinForm.cs",
-              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\JoinForm.cs",
-              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\JoinForm.cs",
-              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\JoinForm.cs",
-              "RelativeToolTip": "SafeMessenger\\Forms\\JoinForm.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABYAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T19:28:43.034Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "JoinForm.Designer.cs",
-              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\JoinForm.Designer.cs",
-              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\JoinForm.Designer.cs",
-              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\JoinForm.Designer.cs",
-              "RelativeToolTip": "SafeMessenger\\Forms\\JoinForm.Designer.cs",
-              "ViewState": "AQIAAI0AAAAAAAAAAADgv6UAAAA4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T19:28:35.131Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "JoinForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\JoinForm.cs",
-              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\JoinForm.cs",
-              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\JoinForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "SafeMessenger\\Forms\\JoinForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Title": "ChatForm.Designer.cs",
+              "DocumentMoniker": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\Chat\\ChatForm.Designer.cs",
+              "RelativeDocumentMoniker": "SafeMessenger\\Forms\\Chat\\ChatForm.Designer.cs",
+              "ToolTip": "D:\\Projects\\safe-messenger\\SafeMessenger\\SafeMessenger\\Forms\\Chat\\ChatForm.Designer.cs",
+              "RelativeToolTip": "SafeMessenger\\Forms\\Chat\\ChatForm.Designer.cs",
+              "ViewState": "AQIAAJEAAAAAAAAAAAAvwKsAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T19:28:33.649Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-10-29T21:20:18.07Z",
+              "EditorCaption": ""
             }
           ]
         }

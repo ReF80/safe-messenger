@@ -15,7 +15,8 @@ namespace TelegramStyleMessenger
         {
             using (var nameDialog = new ModernInputDialog("Создание чата", "Введите ваше имя:"))
             {
-                if (!string.IsNullOrWhiteSpace(nameDialog.InputText) && nameDialog.ShowDialog() == DialogResult.OK)
+                nameDialog.ShowDialog();
+                if (!string.IsNullOrWhiteSpace(nameDialog.InputText)) //  && nameDialog.ShowDialog() == DialogResult.OK
                 {
                     var chatForm = new ChatForm(true, "", nameDialog.InputText);
                     chatForm.Show();

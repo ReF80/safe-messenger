@@ -46,12 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\ChatForm.cs">
+    <Compile Include="Forms\Algorithms\Kuznechik.cs" />
+    <Compile Include="Forms\Algorithms\sha3.cs" />
+    <Compile Include="Forms\Chat\ChatForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ChatForm.Designer.cs">
+    <Compile Include="Forms\Chat\ChatForm.Designer.cs">
       <DependentUpon>ChatForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Chat\MessagePanel.cs" />
     <Compile Include="Forms\JoinForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,7 +75,7 @@
     <Compile Include="Forms\StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\ChatForm.resx">
+    <EmbeddedResource Include="Forms\Chat\ChatForm.resx">
       <DependentUpon>ChatForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\JoinForm.resx">
