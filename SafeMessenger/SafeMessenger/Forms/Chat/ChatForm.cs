@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SafeMessenger.Forms.Algorithms;
 
 namespace TelegramStyleMessenger
 {
@@ -25,6 +26,7 @@ namespace TelegramStyleMessenger
         private CancellationTokenSource cancellationTokenSource;
 
         private MessagePanel messagePanel;
+        Kuznechik kuznechik;
 
 
         public ChatForm(bool isServer, string connectionInfo, string userName = "")
@@ -221,7 +223,10 @@ namespace TelegramStyleMessenger
                             }
                             else
                             {
-                                AddMessage(message, false);
+                                //Decript message
+                                //var decriptMessange = kuznechik.EncriptMessange(message);
+                                AddMessage(kuznechik.EncriptMessange(message), false);
+                                //Добавить запись в файл двух сообщений и его отправка
                             }
                         }
                     }
@@ -396,7 +401,9 @@ namespace TelegramStyleMessenger
             if (!string.IsNullOrWhiteSpace(txtMessage.Text) && isConnected)
             {
                 string message = $"{userName}: {txtMessage.Text}";
-                SendMessageToServer(message);
+                //Encript messange
+                SendMessageToServer(kuznechik.DecriptMessange(message));
+                //Добавить запись в файл двух сообщений и его отправка
                 AddMessage(txtMessage.Text, false);
                 txtMessage.Clear();
             }
@@ -407,7 +414,7 @@ namespace TelegramStyleMessenger
             try
             {
                 FileInfo fileInfo = new FileInfo(filePath);
-                if (fileInfo.Length > 10 * 1024 * 1024) // 10MB limit
+                if (fileInfo.Length > 10 * 1024 * 1024) 
                 {
                     AddMessage("Файл слишком большой (максимум 10MB)", true);
                     return;
@@ -415,12 +422,10 @@ namespace TelegramStyleMessenger
 
                 byte[] fileData = File.ReadAllBytes(filePath);
 
-                // Отправляем информацию о файле
                 string fileInfoMessage = $"FILE:{fileInfo.Name}|{fileInfo.Length}|{fileData.Length}\n";
                 byte[] infoData = Encoding.UTF8.GetBytes(fileInfoMessage);
                 stream.Write(infoData, 0, infoData.Length);
 
-                // Отправляем данные файла
                 stream.Write(fileData, 0, fileData.Length);
                 stream.Flush();
 
