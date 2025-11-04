@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -8,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SafeMessenger.Forms.Algorithms;
+using SafeMessenger.Forms.Chat;
 
 namespace TelegramStyleMessenger
 {
@@ -15,18 +15,24 @@ namespace TelegramStyleMessenger
     {
         private bool isServer;
         private string connectionInfo;
-        private string userName;
+        public string userName;
 
         private TcpListener server;
         private TcpClient client;
-        private NetworkStream stream;
+        public NetworkStream stream;
 
         private Thread listenThread;
-        private bool isConnected;
+        public bool isConnected;
         private CancellationTokenSource cancellationTokenSource;
 
         private MessagePanel messagePanel;
-        Kuznechik kuznechik;
+        Kuznechik kuznechik = new Kuznechik();
+        AutoScroll autoScroll;
+        SendReceiveFile file;
+
+        public bool autoScrollEnabled = true;
+        public const int SCROLL_BUFFER = 20;
+        public Button btnScrollToBottom;
 
 
         public ChatForm(bool isServer, string connectionInfo, string userName = "")
@@ -40,14 +46,13 @@ namespace TelegramStyleMessenger
                 this.userName = "User_" + DateTime.Now.ToString("HHmmss");
             }
             cancellationTokenSource = new CancellationTokenSource();
+            autoScroll = new AutoScroll(this);
+            file = new SendReceiveFile(this);
             InitializeComponent();
             ApplyModernStyle();
+            InitializeAutoScroll();
             _ = InitializeChatAsync();
         }
-
-        [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect,
-            int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
         private async Task InitializeChatAsync()
         {
@@ -113,33 +118,6 @@ namespace TelegramStyleMessenger
             }
         }
 
-        private void ListenForClients()
-        {
-            while (true)
-            {
-                try
-                {
-                    client = server.AcceptTcpClient();
-                    stream = client.GetStream();
-                    isConnected = true;
-
-                    AddMessage("Клиент подключился!", true);
-                    UpdateStatus("Подключено");
-
-                    // Запускаем поток для прослушивания сообщений
-                    Thread clientThread = new Thread(new ThreadStart(ListenForMessages));
-                    clientThread.IsBackground = true;
-                    clientThread.Start();
-
-                    break;
-                }
-                catch
-                {
-                    break;
-                }
-            }
-        }
-
         private async Task ConnectToServerAsync()
         {
             try
@@ -171,14 +149,12 @@ namespace TelegramStyleMessenger
                     AddMessage("Таймаут подключения. Сервер не отвечает.", true);
                     return;
                 }
-
+                   
                 stream = client.GetStream();
                 isConnected = true;
 
                 AddMessage($"Подключено к {ip}:{port}", true);
                 UpdateStatus("Подключено");
-
-                // Отправляем имя пользователя
                 SendMessageToServer($"{userName} присоединился к чату");
 
                 // Запускаем поток для прослушивания сообщений
@@ -219,13 +195,13 @@ namespace TelegramStyleMessenger
                         {
                             if (message.StartsWith("FILE:"))
                             {
-                                ReceiveFile(message.Substring(5));
+                                file.ReceiveFile(message.Substring(5));
                             }
                             else
                             {
                                 //Decript message
-                                //var decriptMessange = kuznechik.EncriptMessange(message);
-                                AddMessage(kuznechik.EncriptMessange(message), false);
+                                var decriptMessange = kuznechik.DecriptMessange(message);
+                                AddMessage(decriptMessange, false);
                                 //Добавить запись в файл двух сообщений и его отправка
                             }
                         }
@@ -260,50 +236,7 @@ namespace TelegramStyleMessenger
             }
         }
 
-        private void ReceiveFile(string fileInfo)
-        {
-            try
-            {
-                string[] parts = fileInfo.Split('|');
-                if (parts.Length != 3) return;
-
-                string fileName = parts[0];
-                long fileSize = long.Parse(parts[1]);
-                int dataSize = int.Parse(parts[2]);
-
-                byte[] fileData = new byte[dataSize];
-                int bytesRead = 0;
-                while (bytesRead < dataSize)
-                {
-                    int read = stream.Read(fileData, bytesRead, dataSize - bytesRead);
-                    if (read == 0) break;
-                    bytesRead += read;
-                }
-
-                if (InvokeRequired)
-                {
-                    Invoke(new Action<string>(f => {
-                        using (SaveFileDialog saveDialog = new SaveFileDialog())
-                        {
-                            saveDialog.FileName = fileName;
-                            saveDialog.Filter = "All files (*.*)|*.*";
-
-                            if (saveDialog.ShowDialog() == DialogResult.OK)
-                            {
-                                File.WriteAllBytes(saveDialog.FileName, fileData);
-                                AddMessage($"Файл {fileName} получен и сохранен", true);
-                            }
-                        }
-                    }), fileName);
-                }
-            }
-            catch (Exception ex)
-            {
-                AddMessage($"Ошибка получения файла: {ex.Message}", true);
-            }
-        }
-
-        private void AddMessage(string message, bool isSystem = false)
+        public void AddMessage(string message, bool isSystem = false)
         {
             if (messageContainer.InvokeRequired)
             {
@@ -311,9 +244,24 @@ namespace TelegramStyleMessenger
             }
             else
             {
-                var messagePanel = CreateMessagePanel(message, isSystem);
-                messageContainer.Controls.Add(messagePanel);
-                messageContainer.ScrollControlIntoView(messagePanel);
+                try
+                {
+                    messageContainer.SuspendLayout();
+
+                    var messagePanel = CreateMessagePanel(message, isSystem);
+                    messageContainer.Controls.Add(messagePanel);
+
+                    if (autoScrollEnabled)
+                    {
+                        autoScroll.ScrollToBottom();
+                    }
+
+                    messageContainer.ResumeLayout(true);
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 
@@ -355,23 +303,20 @@ namespace TelegramStyleMessenger
             return panel;
         }
 
-        private void UpdateStatus(string status)
+        private void SendMessage()
         {
-            if (lblStatus.InvokeRequired)
+            if (!string.IsNullOrWhiteSpace(txtMessage.Text) && isConnected)
             {
-                lblStatus.Invoke(new Action<string>(UpdateStatus), status);
-            }
-            else
-            {
-                lblStatus.Text = status;
-                lblTitle.Text = isServer ? "Созданный чат" : "Подключенный чат";
+                string message = $"{userName}: {txtMessage.Text}";
+                //Encript messange 
+                SendMessageToServer(kuznechik.EncriptMessange(message));
+                //Добавить запись в файл двух сообщений и его отправка
+                AddMessage(txtMessage.Text, false);
+                txtMessage.Clear();
             }
         }
 
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            SendMessage();
-        }
+        private void btnSend_Click(object sender, EventArgs e) => SendMessage();
 
         private void btnAttach_Click(object sender, EventArgs e)
         {
@@ -382,7 +327,7 @@ namespace TelegramStyleMessenger
 
                 if (openDialog.ShowDialog() == DialogResult.OK)
                 {
-                    SendFile(openDialog.FileName);
+                    file.SendFile(openDialog.FileName);
                 }
             }
         }
@@ -396,72 +341,30 @@ namespace TelegramStyleMessenger
             }
         }
 
-        private void SendMessage()
+        private void UpdateStatus(string status)
         {
-            if (!string.IsNullOrWhiteSpace(txtMessage.Text) && isConnected)
+            if (lblStatus.InvokeRequired)
             {
-                string message = $"{userName}: {txtMessage.Text}";
-                //Encript messange
-                SendMessageToServer(kuznechik.DecriptMessange(message));
-                //Добавить запись в файл двух сообщений и его отправка
-                AddMessage(txtMessage.Text, false);
-                txtMessage.Clear();
+                lblStatus.Invoke(new Action<string>(UpdateStatus), status);
+            }
+            else
+            {
+                lblStatus.Text = status;
+                lblTitle.Text = isServer ? "Созданный чат" : "Подключенный чат";
             }
         }
 
-        private void SendFile(string filePath)
-        {
-            try
-            {
-                FileInfo fileInfo = new FileInfo(filePath);
-                if (fileInfo.Length > 10 * 1024 * 1024) 
-                {
-                    AddMessage("Файл слишком большой (максимум 10MB)", true);
-                    return;
-                }
+        private void ChatForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
+        private void MessageContainer_MouseWheel(object sender, MouseEventArgs e) => autoScroll.CheckAutoScrollStatus();
+        private void MessageContainer_MouseEnter(object sender, EventArgs e) => autoScroll.CheckAutoScrollStatus();
+        private void MessageContainer_Resize(object sender, EventArgs e) => autoScroll.UpdateScrollButtonPos();
+        private void MessageContainer_Scroll(object sender, ScrollEventArgs e) => autoScroll.MessageContainerScroll(sender, e);
+        public void UpdateScrollButtonPosition() => autoScroll.UpdateScrollButtonPos();
 
-                byte[] fileData = File.ReadAllBytes(filePath);
+        private void BtnScrollToBottom_Click(object sender, EventArgs e) => autoScroll.BtnScrollToBottomClick(sender, e);
+                [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
-                string fileInfoMessage = $"FILE:{fileInfo.Name}|{fileInfo.Length}|{fileData.Length}\n";
-                byte[] infoData = Encoding.UTF8.GetBytes(fileInfoMessage);
-                stream.Write(infoData, 0, infoData.Length);
-
-                stream.Write(fileData, 0, fileData.Length);
-                stream.Flush();
-
-                AddMessage($"Отправлен файл: {fileInfo.Name}", true);
-            }
-            catch (Exception ex)
-            {
-                AddMessage($"Ошибка отправки файла: {ex.Message}", true);
-            }
-        }
-
-        protected override void OnFormClosed(FormClosedEventArgs e)
-        {
-            base.OnFormClosed(e);
-
-            // Корректное закрытие ресурсов
-            isConnected = false;
-            cancellationTokenSource?.Cancel();
-
-            try
-            {
-                stream?.Close();
-                client?.Close();
-                server?.Stop();
-            }
-            catch
-            {
-                // Игнорируем ошибки при закрытии
-            }
-        }
-
-        private void ChatForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
-
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect,
+            int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
     }
 }

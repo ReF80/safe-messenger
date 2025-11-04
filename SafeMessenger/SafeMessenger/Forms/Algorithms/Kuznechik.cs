@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TelegramStyleMessenger;
-
-namespace SafeMessenger.Forms.Algorithms
+﻿namespace SafeMessenger.Forms.Algorithms
 {
     public class Kuznechik
     {

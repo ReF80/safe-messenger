@@ -168,10 +168,10 @@ namespace TelegramStyleMessenger
         private Panel panelHeader;
         private Label lblTitle;
         private Label lblStatus;
-        private Panel panelChat;
+        public Panel panelChat;
         public FlowLayoutPanel messageContainer;
         private Panel panelInput;
-        private TextBox txtMessage;
+        public TextBox txtMessage;
         private Button btnSend;
         private Button btnAttach;
 
@@ -211,6 +211,35 @@ namespace TelegramStyleMessenger
             btnAttach.ForeColor = Color.White;
             btnAttach.FlatAppearance.BorderSize = 0;
             btnAttach.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 80, 80);
+        }
+
+        private void InitializeAutoScroll()
+        {
+            messageContainer.AutoScroll = true;
+            messageContainer.VerticalScroll.Visible = true;
+            messageContainer.VerticalScroll.Enabled = true;
+            messageContainer.HorizontalScroll.Visible = false;
+
+            btnScrollToBottom = new Button();
+            btnScrollToBottom.Size = new Size(40, 40);
+            btnScrollToBottom.Text = "↓";
+            btnScrollToBottom.BackColor = Color.FromArgb(0, 136, 204);
+            btnScrollToBottom.ForeColor = Color.White;
+            btnScrollToBottom.FlatStyle = FlatStyle.Flat;
+            btnScrollToBottom.FlatAppearance.BorderSize = 0;
+            btnScrollToBottom.Visible = false;
+            btnScrollToBottom.Cursor = Cursors.Hand;
+            btnScrollToBottom.Click += BtnScrollToBottom_Click;
+
+            panelChat.Controls.Add(btnScrollToBottom);
+            btnScrollToBottom.BringToFront();
+
+            messageContainer.Scroll += MessageContainer_Scroll;
+            messageContainer.MouseWheel += MessageContainer_MouseWheel;
+            messageContainer.MouseEnter += MessageContainer_MouseEnter;
+            messageContainer.Resize += MessageContainer_Resize;
+
+            UpdateScrollButtonPosition();
         }
     }
 }
