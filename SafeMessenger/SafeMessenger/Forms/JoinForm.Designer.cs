@@ -42,13 +42,11 @@ namespace TelegramStyleMessenger
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
             // 
-            this.panelMain.Controls.Add(this.button1);
             this.panelMain.Controls.Add(this.btnBack);
             this.panelMain.Controls.Add(this.btnConnect);
             this.panelMain.Controls.Add(this.txtPort);
@@ -154,17 +152,6 @@ namespace TelegramStyleMessenger
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Подключение к чату";
             // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.button1.Location = new System.Drawing.Point(80, 381);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(240, 45);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Подключиться";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // JoinForm
             // 
             this.ClientSize = new System.Drawing.Size(400, 450);
@@ -232,7 +219,5 @@ namespace TelegramStyleMessenger
             btnBack.FlatAppearance.BorderSize = 0;
             btnBack.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 80, 80);
         }
-
-        private Button button1;
     }
 }

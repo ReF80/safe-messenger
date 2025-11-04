@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Forms\Algorithms\Kuznechik.cs" />
     <Compile Include="Forms\Algorithms\sha3.cs" />
+    <Compile Include="Forms\Chat\AutoScroll.cs" />
     <Compile Include="Forms\Chat\ChatForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +56,7 @@
       <DependentUpon>ChatForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Chat\MessagePanel.cs" />
+    <Compile Include="Forms\Chat\SendReceiveFile.cs" />
     <Compile Include="Forms\JoinForm.cs">
       <SubType>Form</SubType>
     </Compile>
